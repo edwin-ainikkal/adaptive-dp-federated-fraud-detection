@@ -1,0 +1,22 @@
+# ------------------------------------------------------------------
+# Server configuration (edit these; command-line flags can override them).
+# Paths are resolved relative to the PROJECT FOLDER (the folder that contains
+# "server/", "client/" ...), so it does not matter where you launch from.
+# ------------------------------------------------------------------
+host: "0.0.0.0"        # listen on all network interfaces so the other desktop can reach it
+port: 5000
+
+num_clients: 4         # total number of client PROCESSES (all desktops together)
+num_rounds: 15         # federated learning rounds
+
+data_csv: "creditcard.csv"   # put the CSV in the project folder (or give an absolute path)
+test_size: 0.2
+seed: 42               # must match the seed every client uses
+delta: 1.0e-5          # delta of the (epsilon, delta)-DP guarantee
+
+# PRIVACY FILTER: stop training automatically once this epsilon would be exceeded.
+# Set to null to disable. (Each client enforces it locally; the server also stops.)
+epsilon_budget: 8.0
+
+results_dir: "results"     # metrics.csv + global_model_final.npz are written here
+auto_shutdown: true        # server exits by itself a few seconds after training ends
