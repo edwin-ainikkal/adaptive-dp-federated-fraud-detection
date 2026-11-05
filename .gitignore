@@ -2,7 +2,5 @@ creditcard.csv
 venv/
 __pycache__/
 *.pyc
-results/*
-!results/.gitkeep
 .vscode/
 .idea/
